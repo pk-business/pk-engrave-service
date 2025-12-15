@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productId": {
+      "type": "string",
+      "default": "1",
+      "required": true,
+      "unique": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "oldPrice": {
+      "type": "decimal"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "materialType": {
+      "type": "string",
+      "required": true
+    },
+    "occasions": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "customizable": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "sizes": {
+      "type": "json",
+      "required": true
+    },
+    "inStock": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "rating": {
+      "type": "decimal",
+      "default": 5
+    },
+    "reviewCount": {
+      "type": "integer"
+    }
+  }
+}
