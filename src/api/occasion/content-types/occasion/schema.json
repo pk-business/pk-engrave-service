@@ -1,0 +1,15 @@
+{
+  "kind": "collectionType",
+  "collectionName": "occasions",
+  "info": {
+    "singularName": "occasion",
+    "pluralName": "occasions",
+    "displayName": "Occasion"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "name" },
+    "products": { "type": "relation", "relation": "manyToMany", "target": "api::product.product" }
+  }
+}

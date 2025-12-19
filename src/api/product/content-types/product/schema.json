@@ -4,76 +4,65 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "product"
+    "displayName": "Product"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "productId": {
-      "type": "string",
-      "default": "1",
-      "required": true,
-      "unique": true
-    },
     "name": {
       "type": "string",
       "required": true
     },
-    "shortDescription": {
-      "type": "string",
-      "required": true
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     },
     "description": {
-      "type": "string"
+      "type": "richtext"
     },
     "price": {
-      "type": "decimal",
-      "required": true
-    },
-    "oldPrice": {
       "type": "decimal"
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ]
+    "imageUrl": {
+      "type": "string"
     },
-    "materialType": {
-      "type": "string",
-      "required": true
+    "imageAlt": {
+      "type": "string"
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true
+    },
+    "material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::material.material"
     },
     "occasions": {
-      "type": "string",
-      "required": true
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::occasion.occasion"
     },
-    "category": {
-      "type": "string",
-      "required": true
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category"
     },
     "customizable": {
       "type": "boolean",
-      "required": true,
-      "default": true
+      "default": false
     },
     "sizes": {
-      "type": "json",
-      "required": true
+      "type": "json"
     },
     "inStock": {
       "type": "boolean",
-      "required": true,
       "default": true
     },
     "rating": {
-      "type": "decimal",
-      "default": 5
+      "type": "decimal"
     },
     "reviewCount": {
       "type": "integer"
