@@ -25,15 +25,16 @@
     "price": {
       "type": "decimal"
     },
-    "imageUrl": {
-      "type": "string"
+    "oldPrice": {
+      "type": "decimal"
     },
     "imageAlt": {
       "type": "string"
     },
     "gallery": {
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "allowedTypes": ["images"]
     },
     "material": {
       "type": "relation",
@@ -66,6 +67,12 @@
     },
     "reviewCount": {
       "type": "integer"
+    },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images", "videos"]
     }
   }
 }

@@ -540,9 +540,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     customizable: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     description: Schema.Attribute.RichText;
-    gallery: Schema.Attribute.Media<undefined, true>;
+    featuredImage: Schema.Attribute.Media<'images' | 'videos'> &
+      Schema.Attribute.Required;
+    gallery: Schema.Attribute.Media<'images', true>;
     imageAlt: Schema.Attribute.String;
-    imageUrl: Schema.Attribute.String;
     inStock: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -556,6 +557,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::occasion.occasion'
     >;
+    oldPrice: Schema.Attribute.Decimal;
     price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Decimal;
