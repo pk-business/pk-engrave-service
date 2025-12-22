@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "landing_pages",
+  "info": {
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "landing-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSlides": {
+      "type": "component",
+      "component": "hero.hero-slide",
+      "repeatable": true,
+      "min": 1,
+      "max": 5
+    }
+  }
+}
