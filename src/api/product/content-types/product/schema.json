@@ -34,7 +34,9 @@
     "gallery": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "material": {
       "type": "relation",
@@ -72,7 +74,35 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images", "videos"]
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "isFeaturedProduct": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "recipient_lists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::recipient-list.recipient-list",
+      "mappedBy": "products"
+    },
+    "product_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-category.product-category",
+      "inversedBy": "products"
+    },
+    "bulkEligible": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "bulkPricingRules": {
+      "type": "json"
     }
   }
 }
