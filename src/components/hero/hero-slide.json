@@ -27,11 +27,6 @@
         "videos"
       ]
     },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
-    },
     "occasion": {
       "type": "relation",
       "relation": "oneToOne",
