@@ -9,7 +9,6 @@ export interface HeroHeroSlide extends Struct.ComponentSchema {
     backgroundMedia: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
       Schema.Attribute.Required;
     buttonText: Schema.Attribute.String & Schema.Attribute.Required;
-    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     occasion: Schema.Attribute.Relation<'oneToOne', 'api::occasion.occasion'>;

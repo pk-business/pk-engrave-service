@@ -48,11 +48,6 @@
       "relation": "manyToMany",
       "target": "api::occasion.occasion"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category"
-    },
     "customizable": {
       "type": "boolean",
       "default": false
