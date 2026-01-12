@@ -47,6 +47,11 @@
       "relation": "manyToOne",
       "target": "api::comment.comment",
       "inversedBy": "comments"
+    },
+    "approved": {
+      "type": "boolean",
+      "required": false,
+      "default": false
     }
   }
 }
