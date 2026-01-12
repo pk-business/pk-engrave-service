@@ -12,10 +12,25 @@
   "pluginOptions": {},
   "attributes": {
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "subscribedAt": {
+      "type": "datetime"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
     },
     "source": {
-      "type": "string"
+      "type": "enumeration",
+      "default": "newsletter",
+      "enum": [
+        "newsletter",
+        "registration",
+        "checkout"
+      ]
     }
   }
 }

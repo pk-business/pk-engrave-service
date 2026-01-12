@@ -13,7 +13,7 @@
   "attributes": {
     "context": {
       "type": "text",
-      "required": false
+      "required": true
     },
     "author": {
       "type": "string",
@@ -21,37 +21,45 @@
     },
     "email": {
       "type": "email",
+      "private": true,
       "required": true
     },
-    "commentedDate": {
-      "type": "date",
-      "required": false
-    },
-    "userNmae": {
+    "username": {
       "type": "string"
-    },
-    "comments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment.comment",
-      "mappedBy": "parent"
-    },
-    "parent": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::comment.comment",
-      "inversedBy": "comments"
     },
     "approved": {
       "type": "boolean",
-      "required": false,
+      "required": true,
       "default": false
     },
-    "Comment": {
+    "blog_post": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::blog-post.blog-post",
       "inversedBy": "blogpost"
+    },
+    "parentComment": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "comment"
+    },
+    "comment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comment.comment",
+      "inversedBy": "parentComment"
+    },
+    "commentedDate": {
+      "type": "date"
+    },
+    "isEdited": {
+      "type": "boolean",
+      "default": false
+    },
+    "ipAddress": {
+      "type": "string",
+      "private": true
     }
   }
 }

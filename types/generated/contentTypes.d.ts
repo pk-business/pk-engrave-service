@@ -480,28 +480,40 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    approved: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    approved: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     author: Schema.Attribute.String & Schema.Attribute.Required;
-    Comment: Schema.Attribute.Relation<'manyToOne', 'api::blog-post.blog-post'>;
+    blog_post: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::blog-post.blog-post'
+    >;
+    comment: Schema.Attribute.Relation<'manyToOne', 'api::comment.comment'>;
     commentedDate: Schema.Attribute.Date;
-    comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
-    context: Schema.Attribute.Text;
+    context: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    ipAddress: Schema.Attribute.String & Schema.Attribute.Private;
+    isEdited: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::comment.comment'
     > &
       Schema.Attribute.Private;
-    parent: Schema.Attribute.Relation<'manyToOne', 'api::comment.comment'>;
+    parentComment: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::comment.comment'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    userNmae: Schema.Attribute.String;
+    username: Schema.Attribute.String;
   };
 }
 
@@ -737,7 +749,10 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -745,7 +760,11 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    source: Schema.Attribute.String;
+    source: Schema.Attribute.Enumeration<
+      ['newsletter', 'registration', 'checkout']
+    > &
+      Schema.Attribute.DefaultTo<'newsletter'>;
+    subscribedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
