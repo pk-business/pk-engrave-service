@@ -52,11 +52,11 @@
       "type": "date",
       "required": false
     },
-    "comments": {
+    "blogpost": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
-      "mappedBy": "blog_post"
+      "mappedBy": "Comment"
     }
   }
 }

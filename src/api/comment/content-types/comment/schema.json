@@ -23,12 +23,6 @@
       "type": "email",
       "required": true
     },
-    "blog_post": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::blog-post.blog-post",
-      "inversedBy": "comments"
-    },
     "commentedDate": {
       "type": "date",
       "required": false
@@ -52,6 +46,12 @@
       "type": "boolean",
       "required": false,
       "default": false
+    },
+    "Comment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::blog-post.blog-post",
+      "inversedBy": "blogpost"
     }
   }
 }
