@@ -443,8 +443,8 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   attributes: {
     articlePublishedAt: Schema.Attribute.Date;
     author: Schema.Attribute.String & Schema.Attribute.Required;
+    blogpost: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     category: Schema.Attribute.String;
-    comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     content: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Article loading...'>;
@@ -482,10 +482,7 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   attributes: {
     approved: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     author: Schema.Attribute.String & Schema.Attribute.Required;
-    blog_post: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::blog-post.blog-post'
-    >;
+    Comment: Schema.Attribute.Relation<'manyToOne', 'api::blog-post.blog-post'>;
     commentedDate: Schema.Attribute.Date;
     comments: Schema.Attribute.Relation<'oneToMany', 'api::comment.comment'>;
     context: Schema.Attribute.Text;
