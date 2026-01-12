@@ -56,7 +56,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
-      "mappedBy": "Comment"
+      "mappedBy": "blog_post"
     }
   }
 }
