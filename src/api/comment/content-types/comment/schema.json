@@ -13,7 +13,7 @@
   "attributes": {
     "context": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "author": {
       "type": "string",
@@ -32,6 +32,21 @@
     "commentedDate": {
       "type": "date",
       "required": false
+    },
+    "userNmae": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "parent"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comment.comment",
+      "inversedBy": "comments"
     }
   }
 }
