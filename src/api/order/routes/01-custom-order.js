@@ -3,9 +3,10 @@ module.exports = {
     {
       method: 'POST',
       path: '/order/send-email',
-      handler: 'api::order.order.sendEmail',
+      handler: 'order.sendEmail',
       config: {
-        auth: false,
+        policies: [],
+        middlewares: [],
       },
     },
   ],
